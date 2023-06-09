@@ -96,10 +96,11 @@ def handle_file_post():
             if DetectCheat(keypoints):
                 # Save the output_image
                 # cv2.imwrite(f'C:/Users/JOHN/Desktop/cheating-detection/client/public/images/detectedImages/cheating_frame_{frame_counter}.jpg', output_image)
-                cheatingPoses.append(get_image_files(output_image))
-        if frame_counter >= total_frames:  # Break out of the loop when all frames have been processed
-            print(cheatingPoses[0])
-            break
+                temp = image_to_base64(output_image)
+                cheatingPoses.append(temp)
+        if frame_counter >= total_frames:
+            break  # Break out of the loop when all frames have been processed
+    return cheatingPoses
 
 
 if __name__ == "__main__":
