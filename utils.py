@@ -4,6 +4,7 @@ import pandas as pd
 import os
 import glob
 import base64
+import cv2
 
 def SetColumnHeading(dim=None):
     if dim == "x" or dim == "X":
@@ -113,5 +114,6 @@ def get_image_files(folder_path):
     return image_files
 
 def image_to_base64(image_data):
-    base64_data = base64.b64encode(image_data).decode('utf-8')
+    _, buffer = cv2.imencode('.jpg', image_data)
+    base64_data = base64.b64encode(buffer).decode('utf-8')
     return base64_data
