@@ -83,7 +83,7 @@ def handle_file_post():
             break
  
         frame_counter += 1
-        if frame_counter % 10 == 0:  # process every 10th frame
+        if frame_counter % 7 == 0:  # process every 10th frame
             # Process the frame with OpenPose
             datum = op.Datum()
             datum.cvInputData = image
